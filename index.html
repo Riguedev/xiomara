@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un detalle especial ✨</title>
+  
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Enlace a tu archivo CSS -->
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+
+  <!-- Elementos decorativos flotantes de fondo -->
+  <div class="heart-shape heart-1">💖</div>
+  <div class="heart-shape heart-2">✨</div>
+  <div class="heart-shape heart-3">🌸</div>
+
+  <!-- Etiqueta de audio -->
+  <audio id="miMusica" loop>
+    <source src="./assets/audio/Anamanaguchi - Miku.opus">
+  </audio>
+
+  <main class="main-container">
+    
+    <!-- PANTALLA INICIAL -->
+    <div id="welcome-screen" class="welcome-screen">
+      <span class="badge">Para una amiga super especial</span>
+      <h1 class="title">Tengo una sorpresa para ti...</h1>
+      <p class="subtitle">Toca el botón para descubrirlo 💖</p>
+      
+      <button class="magic-button" onclick="revelarSorpresa()">
+        <span>Abrir sorpresa</span> 💌
+      </button>
+    </div>
+
+    <!-- CONTENIDO OCULTO (CUADRÍCULA) -->
+    <div id="hidden-content" class="hidden-content">
+      
+      <!-- Encabezado -->
+      <header class="header">
+        <span class="badge">Nuestros Momentos</span>
+        <h1 class="title">Recuerdos Inolvidables ✨</h1>
+        <p class="subtitle">Toca cualquier tarjeta para ver más detalles.</p>
+      </header>
+
+      <!-- Cuadrícula 2x2 -->
+      <section class="grid-container">
+        
+        <!-- Tarjeta 1 -->
+        <article class="card" onclick="abrirModal('Problemas', './assets/images/llora.webp', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+          <div class="image-wrapper">
+            <img src="./assets/images/llora.webp" alt="miku llorando">
+          </div>
+          <div class="card-content">
+            <h3>Problemas</h3>
+            <p>Toca para ver más...</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="card" onclick="abrirModal('Risas', './assets/images/feliz.jpeg', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+          <div class="image-wrapper">
+            <img src="./assets/images/feliz.jpeg" alt="Miku feliz">
+          </div>
+          <div class="card-content">
+            <h3>Risas</h3>
+            <p>Toca para ver más...</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="card" onclick="abrirModal('Cansancio', './assets/images/dormi.jpeg', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+          <div class="image-wrapper">
+            <img src="./assets/images/dormi.jpeg" alt="Miku Dormida">
+          </div>
+          <div class="card-content">
+            <h3>Cansancio</h3>
+            <p>Toca para ver más...</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4 -->
+        <article class="card" onclick="abrirModal('Romances', './assets/images/hot.png', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+          <div class="image-wrapper">
+            <img src="./assets/images/hot.png" alt="Miku Hot">
+          </div>
+          <div class="card-content">
+            <h3>Romances</h3>
+            <p>Toca para ver más...</p>
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- VENTANA FLOTANTE / MODAL -->
+  <div id="modal-overlay" class="modal-overlay" onclick="cerrarModal(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModalDirecto()">✕</button>
+      <div class="modal-image-wrapper">
+        <img id="modal-img" src="" alt="Imagen ampliada">
+      </div>
+      <h2 id="modal-title">Título</h2>
+      <p id="modal-text">Texto placeholder...</p>
+    </div>
+  </div>
+
+  <script>
+    function revelarSorpresa() {
+      const audio = document.getElementById('miMusica');
+      if (audio) {
+        audio.play().catch(error => {
+          console.log("Audio play error:", error);
+        });
+      }
+
+      const welcomeScreen = document.getElementById('welcome-screen');
+      welcomeScreen.style.opacity = '0';
+      welcomeScreen.style.transform = 'scale(0.95)';
+      
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        const hiddenContent = document.getElementById('hidden-content');
+        hiddenContent.style.display = 'block';
+      }, 400);
+    }
+
+    // Funciones para la ventana flotante (Modal)
+    function abrirModal(titulo, imagenSrc, texto) {
+      document.getElementById('modal-title').innerText = titulo;
+      document.getElementById('modal-img').src = imagenSrc;
+      document.getElementById('modal-text').innerText = texto;
+      
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function cerrarModal(event) {
+      // Cierra solo si hacen clic en el fondo oscuro (overlay)
+      if (event.target.id === 'modal-overlay') {
+        document.getElementById('modal-overlay').classList.remove('active');
+      }
+    }
+
+    function cerrarModalDirecto() {
+      document.getElementById('modal-overlay').classList.remove('active');
+    }
+  </script>
+
+</body>
+</html>
