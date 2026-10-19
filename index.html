@@ -29,7 +29,7 @@
     
     <!-- PANTALLA INICIAL -->
     <div id="welcome-screen" class="welcome-screen">
-      <span class="badge">Para una amiga super especial</span>
+      <span class="badge">Feliz Cumpleaños Xiomara 🎂</span>
       <h1 class="title">Tengo una sorpresa para ti...</h1>
       <p class="subtitle">Toca el botón para descubrirlo 💖</p>
       
@@ -43,8 +43,8 @@
       
       <!-- Encabezado -->
       <header class="header">
-        <span class="badge">Nuestros Momentos</span>
-        <h1 class="title">Recuerdos Inolvidables ✨</h1>
+        <span class="badge">Feliz Cumpleaños 🎂</span>
+        <h1 class="title">Quiero decirle algo ✨</h1>
         <p class="subtitle">Toca cualquier tarjeta para ver más detalles.</p>
       </header>
 
@@ -52,7 +52,7 @@
       <section class="grid-container">
         
         <!-- Tarjeta 1 -->
-        <article class="card" onclick="abrirModal('Problemas', './assets/images/llora.webp', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+        <article class="card" onclick="abrirModal('Problemas', './assets/images/llora.webp', 'Siempre está para escuchar mis problemas y ayudarme, y quiero que sepa que en lo poco que puedo siempre estoy para ayudarle✨.')">
           <div class="image-wrapper">
             <img src="./assets/images/llora.webp" alt="miku llorando">
           </div>
@@ -63,7 +63,7 @@
         </article>
 
         <!-- Tarjeta 2 -->
-        <article class="card" onclick="abrirModal('Risas', './assets/images/feliz.jpeg', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+        <article class="card" onclick="abrirModal('Risas', './assets/images/feliz.jpeg', 'Con usted casi todo momento se puede convertir en risas, con su compañía cualquier momento es más ameno ❤️')">
           <div class="image-wrapper">
             <img src="./assets/images/feliz.jpeg" alt="Miku feliz">
           </div>
@@ -74,7 +74,7 @@
         </article>
 
         <!-- Tarjeta 3 -->
-        <article class="card" onclick="abrirModal('Cansancio', './assets/images/dormi.jpeg', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+        <article class="card" onclick="abrirModal('Cansancio', './assets/images/dormi.jpeg', 'Admiro su esfuerzo y resiliencia que muestra cada día, trabajar para poder darle a sus hijas lo que necesitan, a pesar del cansancio, desvelo e intoxicación etílica 😴')">
           <div class="image-wrapper">
             <img src="./assets/images/dormi.jpeg" alt="Miku Dormida">
           </div>
@@ -85,9 +85,9 @@
         </article>
 
         <!-- Tarjeta 4 -->
-        <article class="card" onclick="abrirModal('Romances', './assets/images/hot.png', 'Aquí irá el texto detallado o placeholder sobre este momento especial compartido juntas.')">
+        <article class="card" onclick="abrirModal('Romances', './assets/images/hot.jpeg', 'Gracias a usted he aprendido mucho sobre las mujeres, he escuchado historias de sus parejas para no repetir esos errores que comenten y sobre todo a no preguntar &quot;Ya comiste ?&quot')">
           <div class="image-wrapper">
-            <img src="./assets/images/hot.png" alt="Miku Hot">
+            <img src="./assets/images/hot.jpeg" alt="Miku Hot">
           </div>
           <div class="card-content">
             <h3>Romances</h3>
@@ -96,6 +96,11 @@
         </article>
 
       </section>
+
+          <!-- Mensaje final -->
+      <div class="final-message">
+        <h1>💖 Gracias por llegar a mi vida 💖</h1>
+      </div>
 
     </div>
 
@@ -152,6 +157,21 @@
     function cerrarModalDirecto() {
       document.getElementById('modal-overlay').classList.remove('active');
     }
+
+    // Detecta cuando el usuario cambia de pestaña o minimiza el navegador
+    document.addEventListener("visibilitychange", () => {
+      const audio = document.getElementById('miMusica');
+      
+      if (audio) {
+        if (document.hidden) {
+          // Si la pestaña ya no está visible (la ocultó, cambió de app o minimizó), pausa la música
+          audio.pause();
+        } else {
+          // Opcional: si quieres que vuelva a sonar al regresar, descomenta la siguiente línea:
+          audio.play().catch(err => console.log("Error al reanudar:", err));
+        }
+      }
+    });
   </script>
 
 </body>

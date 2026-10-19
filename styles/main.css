@@ -314,6 +314,25 @@ body {
 }
 
 /* ==========================================
+   MENSAJE FINAL
+   ========================================== */
+.final-message {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+.final-message h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--text-title);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+
+/* ==========================================
    RESPONSIVE (MÓVILES)
    ========================================== */
 @media (max-width: 640px) {
@@ -328,5 +347,9 @@ body {
 
   .modal-content {
     padding: 20px;
+  }
+
+  .final-message h1 {
+    font-size: 1.5rem;
   }
 }
